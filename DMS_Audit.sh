@@ -13,13 +13,13 @@ for profile in `cat profiles`;do #Iterates through different accounts in your or
 		#Check for publicly accessible DMS Instances - https://www.cloudconformity.com/knowledge-base/aws/DMS/publicly-accessible.html
 			PubliclyAccessible=`AWS_SHARED_CREDENTIALS_FILE=creds aws dms describe-replication-instances --region $region --filters Name=replication-instance-arn,Values=$rep_instance --profile $profile | jq -r ".ReplicationInstances[].PubliclyAccessible"`
 		#Printing the resultants		
-			echo "Profile" $profile 
-			echo "Region" $region
-			echo "Replication Instance" $rep_instance
-			echo "AutoMinorVersionUpgrade Enabled?" $AutoMinorVersionUpgrade
-			echo "PuliclyAccessible?" $PubliclyAccessible
-			echo "KMSKeyID" $KmsKeyId
-			echo "KeyManager" $KeyManager
+			echo "Profile: "$profile 
+			echo "Region: "$region
+			echo "Replication Instance: "$rep_instance
+			echo "AutoMinorVersionUpgradeEnabled? "$AutoMinorVersionUpgrade
+			echo "PuliclyAccessible? "$PubliclyAccessible
+			echo "KMSKeyID: "$KmsKeyId
+			echo "KeyManager: "$KeyManager
 			echo "-------------------------------------------------------------"
 		done #endloop for different Replication Instance
 	done #endloop for different regions
