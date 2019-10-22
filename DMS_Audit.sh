@@ -20,6 +20,7 @@ for profile in `cat profiles`;do #Iterates through different accounts in your or
       	#https://www.cloudconformity.com/knowledge-base/aws/DMS/publicly-accessible.html
 			PubliclyAccessible=`AWS_SHARED_CREDENTIALS_FILE=creds aws dms describe-replication-instances --region $region --filters Name=replication-instance-arn,Values=$rep_instance --profile $profile | jq -r ".ReplicationInstances[].PubliclyAccessible"`
 			echo $profile $region $rep_instance $AutoMinorVersionUpgrade $PubliclyAccessible $KmsKeyId $KeyManager
+		
 		done #endloop for different Replication Instance
 	done #endloop for different regions
 done #endloop for different AWS accounts
